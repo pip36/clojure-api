@@ -1,6 +1,9 @@
 (ns hello-world.responses.recipe-responses
   (:require
-   [hello-world.db.recipes.queries :refer [get-all-recipes get-recipe-by-id]]
+   [hello-world.db.recipes.queries :refer [get-all-recipes
+                                           get-recipe-by-id
+                                           add-recipe
+                                           delete-recipe-by-id]]
    [clojure.data.json :as json]))
 
 (defn all-recipes []
@@ -14,4 +17,13 @@
     {:status (if found? 200 404)
      :headers {"Content-Type" "application/json"}
      :body (when found? (json/write-str recipe))}))
+
+(defn add-new-recipe [recipe]
+  {:status 201
+   :headers {"Content-Type" "application/json"}
+   :body {:id (:recipes/id (first (add-recipe recipe)))}})
+
+(defn delete-recipe [id]
+  (delete-recipe-by-id id)
+  {:status 204})
 

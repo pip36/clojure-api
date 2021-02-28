@@ -5,6 +5,7 @@
   :dependencies [[org.clojure/clojure "1.10.0"]
                  [compojure "1.6.1"]
                  [ring/ring-defaults "0.3.2"]
+                 [ring/ring-json "0.5.0"]
                  [org.clojure/data.json "1.0.0"]
                  [com.layerware/hugsql "0.5.1"]
                  [seancorfield/next.jdbc "1.1.613"]
